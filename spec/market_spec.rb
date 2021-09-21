@@ -86,7 +86,7 @@ describe Market do
       expected = {
           item1 => {
           quantity: 100,
-          vendors: [vendor1, vendor2]
+          vendors: [vendor1, vendor3]
         },
           item2 => {
           quantity: 7,
@@ -102,27 +102,12 @@ describe Market do
         },
       }
 
-    #   hash_1 = {item1 => {
-    #   quantity: 100,
-    #   vendors: [vendor1, vendor2]
-    # }}
-    #
-    #   hash_2 = {item2 => {
-    #   quantity: 7,
-    #   vendors: [vendor1]
-    # }}
-    #
-    #   hash_3 = {item4 => {
-    #   quantity: 50,
-    #   vendors: [vendor2]
-    # }}
-    #
-    #   hash_4 = {item3 => {
-    #   quantity: 35,
-    #   vendors: [vendor2, vendor3]
-    # }}
-
       expect(@market.total_inventory).to eq(expected)
     end
   end
+end
+
+it '#date' do
+  allow(Date).to receive(:today).and_return(Date.new(2020, 02, 24))
+  expect(@market.date).to eq("24/02/2020")
 end
